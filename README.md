@@ -1,2 +1,3 @@
 # clj-monad-trampoline
-Trampoline monad
+
+Trampoline monad. Reify the stack onto the heap.
