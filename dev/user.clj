@@ -19,6 +19,12 @@
     (cons* a as) (inc as)
     0))
 
+(defn range-coalg
+  [n]
+  (if (pos? n)
+    (cons* n (dec n))
+    empty*))
+
 (defn cata*
   [alg l]
   (bind (map-listf (partial cata* alg) l) alg))
@@ -26,3 +32,11 @@
 (defn cata
   [alg l]
   (run-tramp (cata* (comp done alg) l)))
+
+(defn ana*
+  [coalg l]
+  (map-listf (partial ana* coalg) (coalg l)))
+
+(defn ana
+  [coalg l]
+  (run-tramp (ana* (comp identity coalg) l)))
