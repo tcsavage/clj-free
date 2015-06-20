@@ -19,6 +19,12 @@
     (cons* a as) (inc as)
     0))
 
+(defn product-alg
+  [l]
+  (match-adt l
+    (cons* a as) (* a as)
+    1))
+
 (defn range-coalg
   [n]
   (if (pos? n)
@@ -40,3 +46,10 @@
 (defn ana
   [coalg l]
   (run-tramp (ana* (comp identity coalg) l)))
+
+(defn hylo
+  [alg coalg a]
+  (cata alg (ana coalg a)))
+
+(def factorial
+  (partial hylo product-alg range-coalg))
