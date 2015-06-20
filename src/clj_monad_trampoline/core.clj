@@ -21,16 +21,16 @@
 (defn resume
   [t]
   (match-adt t
-    (done v) (right v)
-    (more k) (left k)
-    (bind* a f) (match-adt a
-                     (done v) (recur (f v))
-                     (more k) (left #(bind (k) f))
-                     (bind* b g) (recur (bind b (fn [x] (bind (g x) f)))))))
+             (done v) (right v)
+             (more k) (left k)
+             (bind* a f) (match-adt a
+                                    (done v) (recur (f v))
+                                    (more k) (left #(bind (k) f))
+                                    (bind* b g) (recur (bind b (fn [x] (bind (g x) f)))))))
 
 ;;; Tramp a -> a
 (defn run-tramp
   [t]
-    (match-adt (resume t)
-               (left x) (recur (x))
-               (right x) x))
+  (match-adt (resume t)
+             (left x) (recur (x))
+             (right x) x))
