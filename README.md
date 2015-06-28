@@ -1,6 +1,6 @@
-# clj-monad-trampoline
+# clj-free
 
-Trampoline monad. Reify the stack onto the heap.
+Free monads.
 
 ## License
 
