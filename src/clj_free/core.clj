@@ -1,5 +1,5 @@
 (ns clj-free.core
-  (:require [clj-mogensen-scott.core :refer [defadt match-adt]]
+  (:require [clj-scott-adts.core :refer [defadt match-adt]]
             [clojure.algo.generic.functor :refer [fmap]]
             [clojure.algo.monads :refer [defmonad]]))
 
